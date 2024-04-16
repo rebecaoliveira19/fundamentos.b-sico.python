@@ -73,15 +73,20 @@ elif n1 == n2:
     # se ja passou do tempo do alistamento
     # seu programa tambem devera mostrar o tempo que falta ou que passou do prazo
 
-ano = int(input('ano de nascimento:   '))
-soma = (ano - 2024)
-if ano <= soma:
-    print(f'Voce ainda vai se alistar ao serviço militar')
-elif ano >= soma:
-    print('Esta na hora de alistar')
-elif ano > soma:
-    print(f'Voce ja passou do tempo do alistamento')
-    print(f'Voce tem {soma} anos para se alistar ao serviço militar')
+from datetime import datetime
+
+ano_nascimento = int(input("Digite o ano de nascimento: "))
+ano_atual = datetime.now().year
+idade = ano_atual - ano_nascimento
+
+if idade < 18:
+    tempo_falta = 18 - idade
+    print(f"Você ainda vai se alistar ao serviço militar. Faltam {tempo_falta} anos.")
+elif idade == 18:
+    print("É hora de se alistar ao serviço militar.")
+else:
+    tempo_passou = idade - 18
+    print(f"Você já passou do tempo do alistamento. Passaram-se {tempo_passou} anos.")
 
 
 
